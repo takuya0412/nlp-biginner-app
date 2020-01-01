@@ -3,6 +3,7 @@ import neologdn
 import pandas as pd
 import MeCab
 from sklearn.feature_extraction.text import CountVectorizer
+from draw_barcharts import draw_barcharts, plt
 
 tagger = MeCab.Tagger()
 
@@ -42,3 +43,6 @@ bow = vectorizer.transform(texts)
 bow_table = pd.DataFrame(bow.toarray(), columns=vectorizer.get_feature_names())
 print('Shape: {}'.format(bow.shape))
 print(bow_table)
+
+draw_barcharts(bow.toarray(), vectorizer.get_feature_names(), texts)
+plt.show()
