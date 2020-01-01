@@ -3,7 +3,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.ticker import MultipleLocator
 
-plt.rcParams['font.family'] = 'IPAPGothic'
+plt.rcParams['font.family'] = 'Hiragino Maru Gothic Pro'
 
 
 def draw_barcharts(value_table, x_labels, titles):
