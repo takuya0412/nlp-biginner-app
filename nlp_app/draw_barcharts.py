@@ -20,7 +20,7 @@ def draw_barcharts(value_table, x_labels, titles):
     xmin= -1
     xmax = n_dims
 
-    show_negative = np.min(value_table < 0)
+    show_negative = np.min(value_table) < 0
     ymin = np.min(value_table) - 0.5 if show_negative else 0
     ymax = np.max(value_table) + 0.5
 
