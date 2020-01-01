@@ -3,6 +3,7 @@ import neologdn
 import pandas as pd
 import MeCab
 from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.decomposition import TruncatedSVD
 from draw_barcharts import draw_barcharts, plt
 
 tagger = MeCab.Tagger()
@@ -46,3 +47,21 @@ print(bow_table)
 
 draw_barcharts(bow.toarray(), vectorizer.get_feature_names(), texts)
 plt.show()
+
+svd = TruncatedSVD(n_components=4, random_state=42)
+
+svd.fit(bow)
+
+decomposed_features = svd.transform(bow)
+
+print("shape: {}".format(decomposed_features.shape))
+print(decomposed_features)
+
+draw_barcharts(decomposed_features, range(svd.n_components), texts)
+plt.show()
+
+draw_barcharts(svd.components_, vectorizer.get_feature_names(), range(svd.n_components))
+plt.show()
+
+print("重要度:{}".format(svd.singular_values_))
+
